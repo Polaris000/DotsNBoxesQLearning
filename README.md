@@ -34,6 +34,9 @@ We analyzed results based on the three parameters: learning rate, discount facto
     Q4 vs Q5 (Q6)
     Q3 vs Q1 (Q7)
     Q1 vs Q2 (Q8)
+    
+#### Note:
+In the experiment representation above, `<Agent 1> <Agent 2> (<Agent 3>)` means that `Agent 1` is trained by playing against `Agent 2` and the resulting trained agent would be `Agent 3`.
 
     
 ## Results
