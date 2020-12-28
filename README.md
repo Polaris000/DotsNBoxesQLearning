@@ -7,11 +7,15 @@ Q-Learning is parameterized by three main parameters which affect how well the t
 
 The second parameter, discount factor, determines how much weight is given to future rewards as compared to immediate rewards. If the discount factor is low, the agent will more strongly favour immediate rewards while a high discount factor favours high rewards in the future. 
 
+![](/assets/qlearning.png)
+
 The third parameter epsilon controls the degree of exploration. As the agent is being trained some actions may initially appear to lead to a high reward. If the agent always picks the action with the best Q-value, during training, it will not be able to visit all state-action pairs. The epsilon factor allows the agent to “explore” during training time by picking an action which appears to be sub-optimal in the hope that it will lead to high rewards in the future. A high epsilon means that the agent will perform too much exploration, leading to slower convergence while a low epsilon leads to low exploration which can result in actually optimal actions for each state not being found.
 
 
 ## The DotsNBoxes Game
 we use Q-Learning to train an agent to play the game dots and boxes. This game consists of a board with a grid of dots. During each round a player connects two dots with a horizontal or vertical line. If a player draws a line that closes a box, they get a point. The player with the maximum number of points wins. For this game, every board configuration is a state for the Q-Learning algorithm and actions consist of drawing horizontal or vertical lines between available dots.
+
+![](/assets/dnb.png)
 
 
 ## Project Implementation
