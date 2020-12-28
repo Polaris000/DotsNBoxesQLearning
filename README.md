@@ -38,6 +38,53 @@ We analyzed results based on the three parameters: learning rate, discount facto
 #### Note:
 In the experiment representation above, `<Agent 1> <Agent 2> (<Agent 3>)` means that `Agent 1` is trained by playing against `Agent 2` and the resulting trained agent would be `Agent 3`.
 
+From the listed experiments, its apparent that a mechanism to store trained QLearning agents is necessary. To do that, we used java's `Serializable` interface and then performed writing and loading operations on objects of the `StateMatrix` class, which represents a QLearning agent's q-table.
+
+```java
+public static void save_table(String filename, StateMatrix obj)
+{
+    try
+    {
+        FileOutputStream fileOut = new FileOutputStream(filename);
+        ObjectOutputStream out = new ObjectOutputStream(fileOut);
+        out.writeObject(obj);
+        out.close();
+        fileOut.close();
+    }
+
+    catch (IOException e)
+    {
+        e.printStackTrace();
+    }
+}
+```
+
+```java
+public static StateMatrix load_table(String filename) throws IOException, OutOfMemoryError
+{
+    StateMatrix stateMatrix;
+    ObjectInputStream objStream = new ObjectInputStream(
+            new FileInputStream(filename));
+
+    try
+    {
+        stateMatrix = (StateMatrix) objStream.readObject();
+    }
+
+    catch (ClassNotFoundException e)
+    {
+        throw new IOException(e.getMessage());
+    }
+
+    finally
+    {
+        objStream.close();
+    }
+
+    return stateMatrix;
+} 
+```
+
     
 ## Results
 We noticed the following trends in the experiments:
